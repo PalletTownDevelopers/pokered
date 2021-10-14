@@ -88,7 +88,11 @@ tools:
 RGBASMFLAGS = -hL -Q8 -P includes.asm -Weverything -Wnumeric-string=2 -Wtruncation=1
 # Create a sym/map for debug purposes if `make` run with `DEBUG=1`
 ifeq ($(DEBUG),1)
-RGBASMFLAGS += -E
+RGBASMFLAGS += -D _DEBUG
+endif
+
+ifeq ($(SPRITE_YELLOW),1)
+RGBASMFLAGS += -D _SPRITE_YELLOW
 endif
 
 $(pokered_obj):        RGBASMFLAGS += -D _RED
